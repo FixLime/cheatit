@@ -1,0 +1,6 @@
+*.zip
+cheatit/node_modules/
+backend/node_modules/
+cheatit/dist/
+backend/cheatit.db
+**/.env
