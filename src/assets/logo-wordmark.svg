@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 56" fill="none">
+  
+  <g transform="translate(0,4)">
+    <path d="M24 0 L48 12 L48 36 L24 48 L0 36 L0 12 Z" fill="#FF5500"></path>
+    <path d="M24 8 L40 16 L40 32 L24 40 L8 32 L8 16 Z" fill="#0D0D0F"></path>
+    
+    <path d="M14 36 L34 12 L37 14 L17 38 Z" fill="#FF5500"></path>
+  </g>
+  
+  <text x="60" y="38" font-family="&#39;Russo One&#39;, &#39;Play&#39;, system-ui, sans-serif" font-size="28" fill="#FFFFFF" letter-spacing="0.5">CHEAT<tspan fill="#FF5500">IT</tspan></text>
+</svg>
