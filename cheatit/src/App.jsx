@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Icon } from './components/Common';
 import Login from './screens/Login';
 import Profile from './screens/Profile';
@@ -7,9 +7,7 @@ import Leaderboard from './screens/Leaderboard';
 import Tournaments from './screens/Tournaments';
 import Ban from './screens/Ban';
 import TopBar from './components/TopBar';
-import logoWordmark from './assets/logo-wordmark.svg';
-
-export const USER = { name: 'hvh_god_2007', level: 7, elo: 1842, initials: 'HV' };
+import { getSession, logout, getLevel } from './store';
 
 const NAV = [
   { id: 'profile',     label: 'PROFILE',      icon: 'home' },
@@ -19,24 +17,47 @@ const NAV = [
 ];
 
 export default function App() {
-  const [loggedIn, setLoggedIn]   = useState(false);
-  const [screen,  setScreen]      = useState('profile');
+  const [user,      setUser]      = useState(null);
+  const [screen,    setScreen]    = useState('profile');
   const [notifOpen, setNotifOpen] = useState(false);
 
-  if (!loggedIn) return <Login onLogin={() => setLoggedIn(true)} />;
+  useEffect(() => {
+    const s = getSession();
+    if (s) setUser(s);
+  }, []);
+
+  function handleLogin(u) {
+    setUser(u);
+    setScreen('profile');
+  }
+
+  function handleLogout() {
+    logout();
+    setUser(null);
+  }
+
+  if (!user) return <Login onLogin={handleLogin} />;
+
+  const level = getLevel(user.elo);
+  const topBarUser = {
+    name:     user.username,
+    initials: user.username.slice(0, 2).toUpperCase(),
+    level,
+    elo:      user.elo,
+  };
 
   const screens = {
-    profile:     <Profile onNavigate={setScreen} />,
-    play:        <Play />,
+    profile:     <Profile user={user} onUserUpdate={setUser} onNavigate={setScreen} />,
+    play:        <Play user={user} onUserUpdate={setUser} />,
     tournaments: <Tournaments />,
-    leaderboard: <Leaderboard />,
+    leaderboard: <Leaderboard user={user} onUserUpdate={setUser} />,
     ban:         <Ban onNavigate={setScreen} />,
   };
 
   return (
     <div style={{ background: '#0D0D0F', minHeight: '100vh', paddingBottom: 80 }}>
       <TopBar
-        user={USER}
+        user={topBarUser}
         active={screen}
         onNav={setScreen}
         notifOpen={notifOpen}
@@ -81,7 +102,7 @@ export default function App() {
           <Icon name="skull" size={13}/>
           <span className="nav-label">BAN</span>
         </button>
-        <button onClick={() => setLoggedIn(false)} style={{
+        <button onClick={handleLogout} style={{
           background: 'transparent', border: 0, color: '#5A5A62',
           padding: '8px 14px', borderRadius: 999, cursor: 'pointer',
           fontSize: 11, fontFamily: 'var(--font-body)', transition: 'color 180ms',
