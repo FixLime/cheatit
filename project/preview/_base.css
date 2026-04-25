@@ -1,0 +1,61 @@
+/* Shared base for preview cards. Each card is a 700px-wide isolated frame. */
+@import url('../colors_and_type.css');
+@import url('../assets/level-badges.css');
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg-0);
+  color: var(--fg-1);
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  line-height: var(--lh-normal);
+  -webkit-font-smoothing: antialiased;
+}
+
+.card {
+  width: 700px;
+  background: var(--bg-0);
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.row { display: flex; align-items: center; gap: 12px; }
+.col { display: flex; flex-direction: column; gap: 8px; }
+.grid { display: grid; gap: 12px; }
+.muted { color: var(--fg-3); }
+.eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--fg-3);
+}
+.swatch-row { display: flex; gap: 0; }
+.swatch {
+  flex: 1;
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 8px 10px;
+  font-size: 10px;
+  font-family: var(--font-mono);
+  color: rgba(255,255,255,0.85);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+}
+.swatch.dark-text { color: rgba(0,0,0,0.7); text-shadow: none; }
+.swatch .name { font-weight: 700; font-size: 11px; }
+.swatch .hex { opacity: 0.8; }
+
+.token-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border-subtle);
+  font-size: 12px;
+}
+.token-row:last-child { border: 0; }
+.token-row .name { font-family: var(--font-mono); color: var(--fg-2); }
+.token-row .val { color: var(--fg-3); font-family: var(--font-mono); }

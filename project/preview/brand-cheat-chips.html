@@ -1,0 +1,38 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="_base.css"></head><body>
+<div class="card">
+  <div class="eyebrow" style="margin-bottom:14px">Выбор софта перед матчем</div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px">
+
+    <!-- Selected card -->
+    <div style="position:relative;background:rgba(255,85,0,0.08);border:1px solid #FF5500;border-radius:6px;padding:14px;box-shadow:0 0 16px rgba(255,85,0,0.2)">
+      <div style="position:absolute;top:8px;right:8px;width:16px;height:16px;border-radius:999px;background:#FF5500;display:flex;align-items:center;justify-content:center;color:#fff;font-size:10px;font-weight:700">✓</div>
+      <div style="width:36px;height:36px;border-radius:4px;background:#0D0D0F;border:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);color:#FF5500;font-size:16px;margin-bottom:10px">N</div>
+      <div style="font-family:var(--font-display);font-size:13px;color:#fff;text-transform:uppercase;letter-spacing:0.02em">NIXWARE</div>
+      <div style="font-size:10px;color:#FF5500;margin-top:4px;text-transform:uppercase;letter-spacing:0.08em;font-weight:700">ЗАЯВЛЕН</div>
+    </div>
+
+    <!-- Default card -->
+    <div style="background:#1C1C1F;border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:14px;cursor:pointer">
+      <div style="width:36px;height:36px;border-radius:4px;background:#0D0D0F;border:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);color:#C8C8CE;font-size:16px;margin-bottom:10px">F</div>
+      <div style="font-family:var(--font-display);font-size:13px;color:#fff;text-transform:uppercase;letter-spacing:0.02em">FATALITY</div>
+      <div style="font-size:10px;color:#8A8A92;margin-top:4px;text-transform:uppercase;letter-spacing:0.08em">HVH</div>
+    </div>
+
+    <!-- Hover/focused card -->
+    <div style="background:#26262A;border:1px solid rgba(255,255,255,0.18);border-radius:6px;padding:14px;cursor:pointer">
+      <div style="width:36px;height:36px;border-radius:4px;background:#0D0D0F;border:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);color:#fff;font-size:16px;margin-bottom:10px">N</div>
+      <div style="font-family:var(--font-display);font-size:13px;color:#fff;text-transform:uppercase;letter-spacing:0.02em">NEVERLOSE</div>
+      <div style="font-size:10px;color:#8A8A92;margin-top:4px;text-transform:uppercase;letter-spacing:0.08em">HVH</div>
+    </div>
+
+    <!-- Disabled / not installed -->
+    <div style="background:#141416;border:1px solid rgba(255,255,255,0.04);border-radius:6px;padding:14px;opacity:0.55">
+      <div style="width:36px;height:36px;border-radius:4px;background:#0D0D0F;border:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);color:#5A5A62;font-size:16px;margin-bottom:10px">M</div>
+      <div style="font-family:var(--font-display);font-size:13px;color:#5A5A62;text-transform:uppercase;letter-spacing:0.02em">MEMESENSE</div>
+      <div style="font-size:10px;color:#5A5A62;margin-top:4px;text-transform:uppercase;letter-spacing:0.08em">НЕ УСТАНОВЛЕН</div>
+    </div>
+
+  </div>
+  <div style="font-family:var(--font-mono);font-size:10px;color:var(--fg-3);margin-top:14px;line-height:1.6">Default · Hover · Selected (orange tint + ✓ + «ЗАЯВЛЕН») · Disabled (40% opacity)</div>
+</div>
+</body></html>

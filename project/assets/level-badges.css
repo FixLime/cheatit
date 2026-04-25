@@ -1,0 +1,44 @@
+/* CHEATIT level badges — replaces FACEIT's soldier silhouette with a skull-in-shield.
+   Renders 10 tiers via .lvl-N class. Drop in <span class="lvl lvl-7">7</span>. */
+
+.lvl {
+  --c: var(--fg-3);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background:
+    radial-gradient(circle at 50% 35%, rgba(255,255,255,0.12), transparent 60%),
+    linear-gradient(180deg, var(--c) 0%, color-mix(in srgb, var(--c) 60%, #000) 100%);
+  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+  font-family: var(--font-display);
+  font-size: 14px;
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+  position: relative;
+}
+.lvl::before {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  background: rgba(0,0,0,0.25);
+  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+  z-index: 0;
+}
+.lvl > * { position: relative; z-index: 1; }
+
+.lvl-sm { width: 22px; height: 22px; font-size: 10px; }
+.lvl-lg { width: 56px; height: 56px; font-size: 22px; }
+.lvl-xl { width: 88px; height: 88px; font-size: 36px; }
+
+.lvl-1  { --c: #6a6a6a; }
+.lvl-2  { --c: #6a6a6a; }
+.lvl-3  { --c: #4eb84e; }
+.lvl-4  { --c: #4eb84e; }
+.lvl-5  { --c: #ffd60a; }
+.lvl-6  { --c: #ffd60a; }
+.lvl-7  { --c: #ffd60a; }
+.lvl-8  { --c: #ff8a00; }
+.lvl-9  { --c: #ff8a00; }
+.lvl-10 { --c: #ff2d2d; }

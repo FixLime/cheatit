@@ -1,0 +1,238 @@
+/* ============================================================
+   CHEATIT — Design Tokens
+   Dark UI, orange accent. Modeled after FACEIT's visual system.
+   ============================================================ */
+
+/* Webfonts — substitutions flagged in README.
+   FACEIT uses 'PlayFair' (proprietary) + 'Play' (Google).
+   We use Inter + Russo One as the closest broadly-available pair. */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Russo+One&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+:root {
+  /* ---------- COLOR — Surfaces ---------- */
+  --bg-0: #0d0d0f;          /* page background, near-black */
+  --bg-1: #1c1c1f;          /* primary surface (cards, nav) */
+  --bg-2: #26262a;          /* raised surface, inputs */
+  --bg-3: #2f2f34;          /* hover on bg-2 */
+  --bg-4: #3a3a40;          /* dividers / strong borders */
+
+  /* ---------- COLOR — Foreground ---------- */
+  --fg-1: #ffffff;          /* primary text */
+  --fg-2: #c8c8ce;          /* secondary text */
+  --fg-3: #8a8a92;          /* tertiary / muted */
+  --fg-4: #5a5a62;          /* disabled / placeholder */
+
+  /* ---------- COLOR — Brand / Accent ---------- */
+  --orange-100: #fff1e6;
+  --orange-300: #ffb380;
+  --orange-500: #ff5500;    /* PRIMARY brand orange */
+  --orange-600: #e64d00;    /* hover */
+  --orange-700: #cc4400;    /* press */
+  --orange-glow: rgba(255, 85, 0, 0.35);
+
+  /* ---------- COLOR — Semantic ---------- */
+  --success: #32d74b;       /* win, online, ready */
+  --success-bg: rgba(50, 215, 75, 0.12);
+  --danger:  #ff453a;       /* loss, kick, ban */
+  --danger-bg: rgba(255, 69, 58, 0.12);
+  --warning: #ffd60a;       /* pending, warning */
+  --warning-bg: rgba(255, 214, 10, 0.12);
+  --info:    #0a84ff;       /* info, premium-ish */
+  --info-bg: rgba(10, 132, 255, 0.12);
+
+  /* ---------- COLOR — FACEIT-style Level ramp (10 tiers) ---------- */
+  --lvl-1:  #6a6a6a;
+  --lvl-2:  #6a6a6a;
+  --lvl-3:  #4eb84e;
+  --lvl-4:  #4eb84e;
+  --lvl-5:  #ffd60a;
+  --lvl-6:  #ffd60a;
+  --lvl-7:  #ffd60a;
+  --lvl-8:  #ff8a00;
+  --lvl-9:  #ff8a00;
+  --lvl-10: #ff2d2d;
+
+  /* ---------- BORDERS ---------- */
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-default: rgba(255, 255, 255, 0.10);
+  --border-strong: rgba(255, 255, 255, 0.18);
+
+  /* ---------- RADII ---------- */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-pill: 999px;
+
+  /* ---------- SHADOWS ---------- */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.6);
+  --shadow-orange: 0 0 24px rgba(255, 85, 0, 0.35);
+  --shadow-inset: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+
+  /* ---------- SPACING (4px base) ---------- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* ---------- TYPE — Families ---------- */
+  --font-display: 'Russo One', 'Play', 'Inter', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* ---------- TYPE — Sizes ---------- */
+  --fs-xs: 11px;
+  --fs-sm: 12px;
+  --fs-base: 14px;
+  --fs-md: 16px;
+  --fs-lg: 18px;
+  --fs-xl: 22px;
+  --fs-2xl: 28px;
+  --fs-3xl: 36px;
+  --fs-4xl: 48px;
+  --fs-5xl: 64px;
+
+  /* ---------- TYPE — Weights ---------- */
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  --fw-black: 900;
+
+  /* ---------- TYPE — Letter spacing ---------- */
+  --ls-tight: -0.01em;
+  --ls-normal: 0;
+  --ls-wide: 0.04em;
+  --ls-wider: 0.08em;          /* tabs, eyebrows, button caps */
+  --ls-widest: 0.16em;
+
+  /* ---------- TYPE — Line heights ---------- */
+  --lh-tight: 1.1;
+  --lh-snug: 1.25;
+  --lh-normal: 1.4;
+  --lh-relaxed: 1.6;
+
+  /* ---------- LAYOUT ---------- */
+  --topbar-h: 56px;
+  --sidebar-w: 240px;
+  --container-max: 1280px;
+  --content-max: 1080px;
+
+  /* ---------- MOTION ---------- */
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-fast: 120ms;
+  --dur-base: 180ms;
+  --dur-slow: 280ms;
+}
+
+/* ============================================================
+   SEMANTIC TYPE STYLES
+   ============================================================ */
+body, .p {
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-normal);
+  color: var(--fg-1);
+  background: var(--bg-0);
+}
+
+/* Display headings — uppercase, condensed feel */
+.display, .h-display {
+  font-family: var(--font-display);
+  font-size: var(--fs-5xl);
+  font-weight: var(--fw-regular); /* Russo One is already heavy */
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-tight);
+  text-transform: uppercase;
+  color: var(--fg-1);
+}
+
+.h1 {
+  font-family: var(--font-display);
+  font-size: var(--fs-3xl);
+  line-height: var(--lh-tight);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-tight);
+  color: var(--fg-1);
+}
+
+.h2 {
+  font-family: var(--font-display);
+  font-size: var(--fs-2xl);
+  line-height: var(--lh-snug);
+  text-transform: uppercase;
+  color: var(--fg-1);
+}
+
+.h3 {
+  font-family: var(--font-body);
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-snug);
+  color: var(--fg-1);
+}
+
+.h4 {
+  font-family: var(--font-body);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-semibold);
+  color: var(--fg-1);
+}
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-wider);
+  color: var(--fg-3);
+}
+
+.label {
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--fg-2);
+}
+
+.caption {
+  font-family: var(--font-body);
+  font-size: var(--fs-xs);
+  color: var(--fg-3);
+  line-height: var(--lh-normal);
+}
+
+.mono, code {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  color: var(--fg-2);
+}
+
+/* Stats / numerals — big, display, often orange */
+.stat {
+  font-family: var(--font-display);
+  font-size: var(--fs-3xl);
+  font-variant-numeric: tabular-nums;
+  color: var(--fg-1);
+  letter-spacing: var(--ls-tight);
+}
+
+/* Button caps */
+.btn-text {
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-wider);
+}

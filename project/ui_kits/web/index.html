@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<title>CHEATIT — UI Kit</title>
+<link rel="stylesheet" href="../../colors_and_type.css"/>
+<link rel="stylesheet" href="../../assets/level-badges.css"/>
+<style>
+  body { margin: 0; background: #0D0D0F; color: #fff; font-family: var(--font-body); }
+  .nav-rail {
+    position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%);
+    background: rgba(13,13,15,0.92); backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.08); border-radius: 999px; padding: 6px;
+    display: flex; gap: 4px; z-index: 100; box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+  }
+  .nav-rail button {
+    background: transparent; border: 0; color: #8A8A92;
+    padding: 8px 16px; border-radius: 999px; cursor: pointer;
+    font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
+    font-family: var(--font-body); transition: all 180ms;
+  }
+  .nav-rail button.active { background: #FF5500; color: #fff; }
+  .nav-rail button:hover:not(.active) { color: #fff; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="Common.jsx"></script>
+<script type="text/babel" src="Login.jsx"></script>
+<script type="text/babel" src="Profile.jsx"></script>
+<script type="text/babel" src="Play.jsx"></script>
+<script type="text/babel" src="Leaderboard.jsx"></script>
+<script type="text/babel" src="Tournaments.jsx"></script>
+<script type="text/babel" src="Ban.jsx"></script>
+
+<script type="text/babel">
+const { useState } = React;
+
+const App = () => {
+  const [view, setView] = useState('profile');
+  const [loggedIn, setLoggedIn] = useState(true);
+
+  if (!loggedIn) return <window.Login/>;
+
+  const screens = {
+    profile: <window.Profile/>,
+    play: <window.Play/>,
+    leaderboard: <window.Leaderboard/>,
+    tournaments: <window.Tournaments/>,
+    ban: <window.Ban/>,
+  };
+
+  const navMap = { play: 'play', tournaments: 'tournaments', leaderboard: 'leaderboard' };
+
+  return (
+    <div data-screen-label={view}>
+      <window.TopBar
+        active={navMap[view] || ''}
+        onNav={(id) => setView(id)}
+        user={{ name: 'hvh_god_2007', level: 7, elo: 1842, initials: 'HV' }}
+      />
+      {screens[view] || screens.profile}
+
+      <div className="nav-rail">
+        <button className={view === 'profile' ? 'active' : ''} onClick={() => setView('profile')}>ПРОФИЛЬ</button>
+        <button className={view === 'play' ? 'active' : ''} onClick={() => setView('play')}>ИГРАТЬ</button>
+        <button className={view === 'tournaments' ? 'active' : ''} onClick={() => setView('tournaments')}>ТУРНИРЫ</button>
+        <button className={view === 'leaderboard' ? 'active' : ''} onClick={() => setView('leaderboard')}>РЕЙТИНГ</button>
+        <button className={view === 'ban' ? 'active' : ''} onClick={() => setView('ban')} style={{ color: view === 'ban' ? '#fff' : '#FF453A' }}>БАН</button>
+        <button onClick={() => setLoggedIn(false)} title="Logout" style={{ color: '#5A5A62' }}>↻ ВХОД</button>
+      </div>
+    </div>
+  );
+};
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>
