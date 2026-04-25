@@ -48,6 +48,10 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 
+@media (max-width: 600px) {
+  .nav-label { display: none; }
+}
+
 body {
   margin: 0;
   background: var(--bg-0);
